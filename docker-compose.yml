@@ -1,0 +1,68 @@
+version: '3'
+services:
+  notebook:
+#    build: .
+#    image: at-docker:5000/zhuokun-static:v1.2-py38-torch1.7.0-cuda11.0-dj0.11.x
+    image: at-docker:5000/static-networks:v0.0.11-py38-torch1.7.0-cuda11-dj-atlab0.12
+    env_file: .env
+    ports:
+      - "9999:8888"
+    network_mode: "host"
+    volumes:
+      - /tmp:/tmp
+      - /mnt/lab:/lab
+      - /mnt/dj-stor01:/dj-stor01
+      - /mnt/dj-stor01-zhiwei:/dj-stor01-zhiwei
+      - /mnt/scratch10:/external10
+#      - /mnt/scratch07:/external
+      - ../../Dropbox/notebooks/static-networks:/src/notebooks
+      - ./:/src/static-networks
+      - ../featurevis/:/src/featurevis
+      - ../neuro_data/:/src/neuro_data
+      - ../attorch/:/src/attorch
+      - ../utils/:/src/utils
+      - ../staticnet_mei/:/src/staticnet_mei
+      # - ../insilico-stimuli/:/src/insilico-stimuli
+      - ../nnsysident:/src/nnsysident
+      - ../nnfabrik:/src/nnfabrik
+      - ../neuralpredictors:/src/neuralpredictors
+      - ../datajoint-python:/src/datajoint-python
+      - ../sensorium:/src/sensorium
+    entrypoint:
+      - /src/static-networks/personal_pkg.sh
+
+  notebooktest:
+#    build: .
+    image: at-docker:5000/static-networks:v0.0.11-py38-torch1.7.0-cuda11-dj-atlab0.12
+    env_file: .envtest
+    ports:
+      - "9990:8888"
+    volumes:
+      - /tmp:/tmp
+      - /mnt/lab:/lab
+      - /mnt/scratch10:/external10
+      - /mnt/scratch07:/external
+      - ./:/src/static-networks
+      - ../featurevis/:/src/featurevis
+      - ../neuro_data/:/src/neuro_data
+      - ../attorch/:/src/attorch
+      - ../utils/:/src/utils
+      - ../staticnet_mei/:/src/staticnet_mei
+      - ../insilico-stimuli/:/src/insilico-stimuli
+      - ../nnsysident:/src/nnsysident
+      - ../nnfabrik:/src/nnfabrik
+      - ../neuralpredictors:/src/neuralpredictors
+      - ../datajoint-python:/src/datajoint-python
+    entrypoint:
+      - /src/static-networks/personal_pkg.sh
+
+  bash:
+#    build: .
+    image: zhuokund/static-networks:v1.2-py38-torch1.7.0-cuda11.0-dj0.11.x 
+    env_file: .env
+    volumes:
+      - /tmp:/tmp
+      - /mnt/scratch10:/external10
+      - /mnt/scratch07:/external
+      - ./:/src/static-networks
+    entrypoint: /bin/bash

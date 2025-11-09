@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "/home/zhiwei/Documents/static-networks"
+		},
+		{
+			"path": "/home/zhiwei/Documents/pipeline"
+		},
+		{
+			"path": "/home/zhiwei/Documents/staticnet_mei"
+		},
+		{
+			"path": "/home/zhiwei/Documents/neuro_data"
+		},
+		{
+			"path": "/home/zhiwei/Documents/featurevis"
+		},
+		{
+			"path": "/home/zhiwei/Documents/stimulus-pipeline"
+		},
+		{
+			"path": "/home/zhiwei/Documents/attorch"
+		},
+		{
+			"path": "/home/zhiwei/Documents/nnfabrik"
+		},
+		{
+			"path": "/home/zhiwei/Documents/stimuli"
+		}
+	],
+	"settings": {}
+}
