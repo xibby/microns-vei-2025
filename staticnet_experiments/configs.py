@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 from attorch.layers import Elu1
 import attorch.losses as losses
-from attorch.losses import PoissonLoss, MSE
+from attorch.losses import PoissonLoss
 import datajoint as dj
 
 import numpy as np
