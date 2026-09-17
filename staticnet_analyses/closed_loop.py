@@ -919,12 +919,11 @@ class ProximityCellMatch(dj.Computed):
         # # target_neurons = base.Dataset.Unit & (base.UnitRanking.Unit & 'rank < 200') & (
         # #         StaticMultiDataset.Member & src_key)
         # target_neurons = base.Dataset.Unit & (StaticMultiDataset.Member & src_key)
-        src_units = meso.ScanSet.Unit & src_key
-
+        src_units = (meso.ScanSet.Unit() * meso.MaskClassification.Type() & src_key & 'type="soma"') #changed to filter for soma
+        
         src_map = dict(src_session='session', src_scan_idx='scan_idx', src_field='field')
         src_key = rename(key, **src_map)
-        # only consider masks classified as "soma"
-        soma_units = (reso.ScanSet.Unit() * reso.MaskClassification.Type() & 'type="soma"')
+        
         src_unit_keys, src_x, src_y, src_z = (meso.StackCoordinates.UnitInfo() & src_key & src_units).fetch('KEY',
                                                                                                             'stack_x',
                                                                                                             'stack_y',
@@ -1024,7 +1023,7 @@ class ProximityCellMatchReso(dj.Computed):
     def make(self, key):
         self.insert1(key)
         src_key = dict(animal_id=key['animal_id'], session=key['src_session'], scan_idx=key['src_scan_idx'])
-        src_units = reso.ScanSet.Unit & src_key
+        src_units = (reso.ScanSet.Unit() * reso.MaskClassification.Type() & src_key & 'type="soma"') #changed to filter for soma
 
         src_map = dict(src_session='session', src_scan_idx='scan_idx', src_field='field')
         src_key = rename(key, **src_map)
