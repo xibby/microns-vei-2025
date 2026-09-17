@@ -923,6 +923,8 @@ class ProximityCellMatch(dj.Computed):
 
         src_map = dict(src_session='session', src_scan_idx='scan_idx', src_field='field')
         src_key = rename(key, **src_map)
+        # only consider masks classified as "soma"
+        soma_units = (reso.ScanSet.Unit() * reso.MaskClassification.Type() & 'type="soma"')
         src_unit_keys, src_x, src_y, src_z = (meso.StackCoordinates.UnitInfo() & src_key & src_units).fetch('KEY',
                                                                                                             'stack_x',
                                                                                                             'stack_y',
@@ -1026,6 +1028,8 @@ class ProximityCellMatchReso(dj.Computed):
 
         src_map = dict(src_session='session', src_scan_idx='scan_idx', src_field='field')
         src_key = rename(key, **src_map)
+        # only consider masks classified as "soma"
+        soma_units = (reso.ScanSet.Unit() * reso.MaskClassification.Type() & 'type="soma"')
         src_unit_keys, src_x, src_y, src_z = (reso.StackCoordinates.UnitInfo() & src_key & src_units).fetch('KEY',
                                                                                                             'stack_x',
                                                                                                             'stack_y',
