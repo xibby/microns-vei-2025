@@ -38,7 +38,7 @@ dj.config.setdefault('stores', dict())
 dj.config['stores'].update({
     'static': dict(
         protocol='file', 
-        location='/dj-stor01/neuro-static')
+        location='/mnt/dj-stor01/neuro-static')
 })
 
 VAE_PATH_3 = '/external/zhiwei/MEI_VAE_centered_mei_params_8.pt'
