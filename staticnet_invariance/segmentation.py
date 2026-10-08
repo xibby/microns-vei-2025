@@ -2904,10 +2904,10 @@ class BipartiteFullFieldParameters(dj.Lookup):
     save_location: varchar(128)
     params: longblob # Params to create noise
     """
-    contents = [(1,'perlin_low_freq',1000000, 64,64,1,'/dj-stor01/datt/perlin_low_freq_1',{'res':(8,8),'octaves':4,'persistence':0.25,'seed':0}),
-               (2,'perlin_low_freq',1000000, 64,64,1,'/dj-stor01/datt/perlin_low_freq_2',{'res':(8,8),'octaves':4,'persistence':0.25,'seed':1}),
-               (3,'perlin_high_freq',1000000,64,64,1,'/dj-stor01/datt/perlin_high_freq_1',{'res':(8,8),'octaves':4,'persistence':1.0,'seed':2}),
-               (4,'perlin_high_freq',1000000,64,64,1,'/dj-stor01/datt/perlin_high_freq_2',{'res':(8,8),'octaves':4,'persistence':1.0,'seed':3})]
+    contents = [(1,'perlin_low_freq',1000000, 64,64,1,'/mnt/dj-stor01/datt/perlin_low_freq_1',{'res':(8,8),'octaves':4,'persistence':0.25,'seed':0}),
+               (2,'perlin_low_freq',1000000, 64,64,1,'/mnt/dj-stor01/datt/perlin_low_freq_2',{'res':(8,8),'octaves':4,'persistence':0.25,'seed':1}),
+               (3,'perlin_high_freq',1000000,64,64,1,'/mnt/dj-stor01/datt/perlin_high_freq_1',{'res':(8,8),'octaves':4,'persistence':1.0,'seed':2}),
+               (4,'perlin_high_freq',1000000,64,64,1,'/mnt/dj-stor01/datt/perlin_high_freq_2',{'res':(8,8),'octaves':4,'persistence':1.0,'seed':3})]
     
     def populate_bipartite_full_field(key,make_new=False):
         bipartite_full_field_params = (BipartiteFullFieldParameters & key).fetch1()
