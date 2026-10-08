@@ -46,7 +46,7 @@ dj.config.setdefault('stores', dict())
 dj.config['stores'].update({
     'toy': dict(
         protocol='file', 
-        location='/dj-stor01/neuro-static')
+        location='/mnt/dj-stor01/neuro-static')
 })
 dj.config['enable_python_native_blobs'] = True
 
@@ -347,7 +347,7 @@ class InputResponse(dj.Computed):
         
         # hack to use preprocessed images
         import pickle
-        with open('/dj-stor01/users/zhiwei/album3_preprocessed_images.pickle', 'rb') as handle:
+        with open('/mnt/dj-stor01/users/zhiwei/album3_preprocessed_images.pickle', 'rb') as handle:
             im_dic = pickle.load(handle)
         images = torch.as_tensor(im_dic['images'], dtype=torch.float32, device='cuda')
         image_ids = im_dic['image_ids']
@@ -387,7 +387,7 @@ class GroupAssignment(dj.Lookup):
         """
 
 from neuro_data.utils.data import h5cached
-@h5cached('/dj-stor01/cache/', mode='array', transfer_to_tmp=False,
+@h5cached('/mnt/dj-stor01/cache/', mode='array', transfer_to_tmp=False,
           file_format='static-toy-group{group_id}-{noise_type}-{collection_id}-{preproc_id}.h5')
 @schema
 class DatasetAssignment(dj.Computed): # noise_type is not correct in this table, please refer to GroupAssignment.Member
