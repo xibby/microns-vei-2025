@@ -23,7 +23,7 @@ dj.config.setdefault('stores', dict())
 dj.config['stores'].update({
     'static': dict(
         protocol='file', 
-        location='/dj-stor01/neuro-static')
+        location='/mnt/dj-stor01/neuro-static')
 })
 
 schema = dj.schema('neurostatic_rf')
